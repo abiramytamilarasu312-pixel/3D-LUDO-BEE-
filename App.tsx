@@ -1,12 +1,11 @@
 
 import React, { useState, useCallback, Suspense, useEffect } from 'react';
 import { Canvas } from '@react-three/fiber';
-import { OrbitControls, PerspectiveCamera, Environment, Stars } from '@react-three/drei';
+import { OrbitControls, PerspectiveCamera, Stars } from '@react-three/drei';
 import { GameState, Color, TokenState, Player } from './types';
 import { COLORS, START_OFFSETS } from './constants';
 import Scene from './components/Scene';
 import UIOverlay from './components/UIOverlay';
-import MainMenu from './components/MainMenu';
 import LoginPage from './components/LoginPage';
 
 const INITIAL_TOKENS = (color: Color): TokenState[] => [
@@ -228,10 +227,15 @@ const App: React.FC = () => {
             onTokenClick={moveToken} 
           />
 
-          <Environment preset="city" />
           <Stars radius={100} depth={50} count={5000} factor={4} saturation={0} fade speed={1} />
-          <ambientLight intensity={0.4} />
-          <spotLight position={[10, 15, 10]} angle={0.3} penumbra={1} intensity={1} castShadow />
+          <ambientLight intensity={0.6} />
+          <directionalLight 
+            position={[5, 10, 5]} 
+            intensity={1.2} 
+            castShadow 
+            shadow-mapSize={[1024, 1024]}
+          />
+          <spotLight position={[10, 15, 10]} angle={0.3} penumbra={1} intensity={1.5} castShadow />
         </Suspense>
       </Canvas>
 

@@ -3,6 +3,8 @@ import React, { useRef, useMemo } from 'react';
 import { useFrame } from '@react-three/fiber';
 import { RoundedBox } from '@react-three/drei';
 import * as THREE from 'three';
+// Fix: Import from types.ts to ensure the module is linked to the global JSX extension.
+import { Color } from '../types';
 
 interface DiceProps {
   value: number;

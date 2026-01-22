@@ -1,4 +1,14 @@
 
+import { ThreeElements } from '@react-three/fiber';
+
+// Fix: Extend the global JSX namespace to include React Three Fiber intrinsic elements.
+// This is the standard way to resolve "Property '...' does not exist on type 'JSX.IntrinsicElements'" in R3F projects.
+declare global {
+  namespace JSX {
+    interface IntrinsicElements extends ThreeElements {}
+  }
+}
+
 export type Color = 'RED' | 'GREEN' | 'YELLOW' | 'BLUE';
 
 export interface TokenState {
